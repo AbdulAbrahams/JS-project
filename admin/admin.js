@@ -1,25 +1,42 @@
 let people = [];
-//button
 let submit = document.querySelector('#submit');
 let display = document.querySelector('#display');
 
-// Add event listener
 
 submit.addEventListener('click', (e)=> {
     e.preventDefault();
-    let firstName = document.querySelector('#firstName').value;
-    let surname = document.querySelector('#surname').value;
-    let email = document.querySelector('#email').value;
+    let Name = document.querySelector('#Name').value;
+    let Size = document.querySelector('#Size').value;
+    let Brand = document.querySelector('#Brand').value;
+    let Price = document.querySelector('#Price').value;
 
-    // Push an object into an array
+    if(Name == "" ||Size == "" ||Brand == "" ||Price == "" ){
+        showAlert('Please fill in details', 'danger');
+    }else{
+        if(selectedRow == null){
+            let list = document.querySelector('#shoe-list');
+            let shoe = document.createElement('tr');
+
+            shoe.innerHTML = `
+                  <td>${Name}</td>
+                  <td>${Size}</td>
+                  <td>${Brand}</td>
+                  <td>${Price}</td>`
+
+                  list.appendChild(shoe);
+                  selectedRow = null;    
+        }
+    }
+
     people.push(
         {
-            firstName,
-            surname,
-            email
+            Name,
+            Size,
+            Brand,
+            Price
         }
     )
-     console.table(people);
+     document.write(people);
 
      localStorage.setItem('data', JSON.stringify(people));
 })

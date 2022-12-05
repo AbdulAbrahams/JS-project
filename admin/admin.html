@@ -29,10 +29,10 @@
         </div>
         <div class="modal-body">
             <form>
-                <input class="col-12 my-3" id="firstName" type="text" placeholder="Enter Shoe Name" required>
-                <input class="col-12 my-3" id="firstName" type="text" placeholder="Enter Shoe Size" required>
-                <input class="col-12 my-3" id="surname" type="text" placeholder="Enter Shoe Brand" required>
-                <input class="col-12 my-3" id="email" type="email" placeholder="Enter Shoe Price" required>
+                <input class="col-12 my-3" id="Name" type="text" placeholder="Enter Shoe Name" required>
+                <input class="col-12 my-3" id="Size" type="text" placeholder="Enter Shoe Size" required>
+                <input class="col-12 my-3" id="Brand" type="text" placeholder="Enter Shoe Brand" required>
+                <input class="col-12 my-3" id="Price" type="text" placeholder="Enter Shoe Price" required>
                 <button id="submit">Submit</button>
         <button id="display">Display</button>
             </form>
@@ -57,8 +57,14 @@
                 <th>Brand</th>
                 <th>Price</th>
             </thead>
-            <tbody>
-                
+            <tbody id="shoe-list">
+                <tr>
+                  <td>0</td>
+                  <td>Air Forces</td>
+                  <td>8</td>
+                  <td>Nike</td>
+                  <td>R1300</td>
+                </tr>
             </tbody>
         </table>
         </div>

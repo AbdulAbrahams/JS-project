@@ -16,10 +16,8 @@
         </a>
 
         <ul class="nav nav-pills" id="nav">
-            <button class="nav-item mx-3"><a href="#feat" class="nav-link link-dark">Edit a Shoe</a></button>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    + Add a Shoe
-  </button>
+            <a href="../index.html"><button type="button" class="btn btn-dark mx-3">Back to Home</button></a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Add a Shoe</button>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -28,18 +26,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form>
+            <form onsubmit="shoeSubmit()" autocomplete="off">
                 <input class="col-12 my-3" id="Name" type="text" placeholder="Enter Shoe Name" required>
                 <input class="col-12 my-3" id="Size" type="text" placeholder="Enter Shoe Size" required>
                 <input class="col-12 my-3" id="Brand" type="text" placeholder="Enter Shoe Brand" required>
                 <input class="col-12 my-3" id="Price" type="text" placeholder="Enter Shoe Price" required>
-                <button id="submit">Submit</button>
-        <button id="display">Display</button>
+                <div class="modal-footer">
+                    <button type="Submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit" value="submit">Add Shoe</button>
+                </div>
             </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

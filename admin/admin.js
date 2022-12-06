@@ -1,49 +1,40 @@
 let people = [];
 let submit = document.querySelector('#submit');
 let display = document.querySelector('#display');
+let Row = null;
 
+function getShoe(){
+    var Shoe = {};
+    Shoe['Name'] = document.getElementById('Name').value;
+    Shoe['Size'] = document.getElementById('Size').value;
+    Shoe['Brand'] = document.getElementById('Brand').value;
+    Shoe['Price'] = document.getElementById('Price').value;
+    return Shoe; 
+}
 
-submit.addEventListener('click', (e)=> {
+function shoeSubmit(e){
     e.preventDefault();
-    let Name = document.querySelector('#Name').value;
-    let Size = document.querySelector('#Size').value;
-    let Brand = document.querySelector('#Brand').value;
-    let Price = document.querySelector('#Price').value;
-
-    if(Name == "" ||Size == "" ||Brand == "" ||Price == "" ){
-        showAlert('Please fill in details', 'danger');
-    }else{
-        if(selectedRow == null){
-            let list = document.querySelector('#shoe-list');
-            let shoe = document.createElement('tr');
-
-            shoe.innerHTML = `
-                  <td>${Name}</td>
-                  <td>${Size}</td>
-                  <td>${Brand}</td>
-                  <td>${Price}</td>`
-
-                  list.appendChild(shoe);
-                  selectedRow = null;    
-        }
+    var Shoe = getShoe();
+    if(Row === null){
+        newShoe(Shoe);
     }
+}
 
-    people.push(
-        {
-            Name,
-            Size,
-            Brand,
-            Price
-        }
-    )
-     document.write(people);
+function newShoe(data){
+    let shoeTable = document.getElementById('shoe-list').document.getElementsByTagName('tbody')[0];
+    let newRow = shoeTable.insertShoe(shoeTable.length);
+    var shoe1 = newRow.insertCell(0);
+        shoe1.innerHTML = data.Name;
+    var shoe2 = newRow.insertCell(1);
+        shoe2.innerHTML = data.Size;
+    var shoe3 = newRow.insertCell(2);
+        shoe3.innerHTML = data.Brand;
+    var shoe4 = newRow.insertCell(3);
+        shoe4.innerHTML = data.Price;
 
-     localStorage.setItem('data', JSON.stringify(people));
-})
+}
 
-display.addEventListener('click', (e)=> {
-    e.preventDefault();
-    console.log(
-        JSON.parse(localStorage.getItem('data'))
-    );
-})
+
+
+
+

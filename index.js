@@ -27,7 +27,7 @@
 fetch("./admin/admin.json").then(function(response){
     return response.json();
 }).then(function(Shoes){
-    let placeholder = document.querySelector("#shoe-output");
+    let card = document.querySelector("#shoe-output");
     let ShoeOut = "";
     for(let Data of Shoes){
         ShoeOut +=`
@@ -51,5 +51,5 @@ fetch("./admin/admin.json").then(function(response){
         `;
     }
 
-    placeholder.innerHTML = ShoeOut;
+    card.innerHTML = ShoeOut;
 })

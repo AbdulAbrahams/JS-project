@@ -42,9 +42,7 @@ select{
 }
 
 @media screen and (width < 4000px) {
-    *, 
-*::after,
-::before{
+    *{
     font-family: fantasy;
     font-weight: 400;
 }

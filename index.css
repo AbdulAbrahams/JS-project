@@ -41,7 +41,7 @@ select{
     padding: 5px;
 }
 
-@media screen and (width < 4000px) {
+@media (width < 4000px) {
     *{
     font-family: fantasy;
     font-weight: 400;

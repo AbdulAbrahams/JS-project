@@ -1,38 +1,50 @@
-let people = [];
+let Shoes = [
+    {ID: 0,
+    Name: 'Air Forces',
+    Brand: 'Nike',
+    Price: 'R1300'
+}
+];
+
 let submit = document.querySelector('#submit');
-let display = document.querySelector('#display');
-let Row = null;
 
-function getShoe(){
-    var Shoe = {};
-    Shoe['Name'] = document.getElementById('Name').value;
-    Shoe['Size'] = document.getElementById('Size').value;
-    Shoe['Brand'] = document.getElementById('Brand').value;
-    Shoe['Price'] = document.getElementById('Price').value;
-    return Shoe; 
-}
 
-function shoeSubmit(e){
+submit.addEventListener('click', (e)=> {
     e.preventDefault();
-    var Shoe = getShoe();
-    if(Row === null){
-        newShoe(Shoe);
+    let ID = document.querySelector('#ID').value;
+    let Name = document.querySelector('#Name').value;
+    let Brand = document.querySelector('#Brand').value;
+    let Price = document.querySelector('#Price').value;
+
+    if(ID == "" ||Name == "" ||Brand == "" ||Price == "" ){
+        return
     }
-}
 
-function newShoe(data){
-    let shoeTable = document.getElementById('shoe-list').document.getElementsByTagName('tbody')[0];
-    let newRow = shoeTable.insertShoe(shoeTable.length);
-    var shoe1 = newRow.insertCell(0);
-        shoe1.innerHTML = data.Name;
-    var shoe2 = newRow.insertCell(1);
-        shoe2.innerHTML = data.Size;
-    var shoe3 = newRow.insertCell(2);
-        shoe3.innerHTML = data.Brand;
-    var shoe4 = newRow.insertCell(3);
-        shoe4.innerHTML = data.Price;
+    Shoes.push(
+        {
+            ID,
+            Name,
+            Brand,
+            Price
+        }
+    )
+     let tableData = "";
+     Shoes.map((data) =>{
+         tableData+=`
+         <tr>
+         <td>${data.ID}</td>
+         <td>${data.Name}</td>
+         <td>${data.Brand}</td>
+         <td>${data.Price}</td>
+         <td>
+         <a href="#" class="btn btn-dark btn-sm">Edit</a>
+         <a href="#" class="btn btn-primary btn-sm">Delete</a>
+         </tr>`;
+     })
+    document.getElementById("shoe-list").innerHTML=tableData;
+ })
 
-}
+     localStorage.setItem('./admin.json', JSON.stringify(people));
 
 
 

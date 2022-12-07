@@ -26,7 +26,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form onsubmit="shoeSubmit()" autocomplete="off">
+            <form autocomplete="off">
+              <input class="col-12 my-3" id="ID" type="text" placeholder="Enter Shoe ID" required>
                 <input class="col-12 my-3" id="Name" type="text" placeholder="Enter Shoe Name" required>
                 <input class="col-12 my-3" id="Size" type="text" placeholder="Enter Shoe Size" required>
                 <input class="col-12 my-3" id="Brand" type="text" placeholder="Enter Shoe Brand" required>
@@ -43,22 +44,25 @@
     </header>
 
     <main>
-        <div class="container-lg">
-            <table class="table table-dark">
-            <thead>
+        <div class="">
+            <table class="table container-sm table-hover">
+            <thead class="table-dark">
                 <th>ID</th>
-                <th>Shoe</th>
-                <th>Size</th>
+                <th>Name</th>
                 <th>Brand</th>
                 <th>Price</th>
+                <th></th>
             </thead>
-            <tbody id="shoe-list">
+            <tbody id="shoe-list" class="table-secondary">
                 <tr>
                   <td>0</td>
                   <td>Air Forces</td>
-                  <td>8</td>
                   <td>Nike</td>
                   <td>R1300</td>
+                  <td>
+                    <a href="#" class="btn btn-dark btn-sm">Edit</a>
+                    <a href="#" class="btn btn-primary btn-sm">Delete</a>
+                  </td>
                 </tr>
             </tbody>
         </table>

@@ -26,22 +26,23 @@
 
 fetch("./admin/admin.json").then(function(response){
     return response.json();
-}).then(function(products){
+}).then(function(Shoes){
     let placeholder = document.querySelector("#shoe-output");
-    let out = "";
-    for(let product of products){
-        out +=`
+    let ShoeOut = "";
+    for(let Data of Shoes){
+        ShoeOut +=`
         <div class="col">
         <div class="card shadow-sm">
-        <img src="${product.img}">
+        <img src="${Data.img}">
         <div class="card-body">
-          <p class="card-text" value="Nike">${product.Name}</p>
+          <p class="card-text" value="Nike">${Data.Name}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">${product.Brand}</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+              <button type="button" class="btn btn-sm btn-dark">Add to Cart</button>
             </div>
-            <small class="text-muted" value="R1000-R1500">${product.Price}</small>
+            <large class="text-muted">${Data.Brand}</large>
+
+            <large class="text-success" value="R1000-R1500">${Data.Price}</large>
           </div>
         </div>
       </div>
@@ -50,5 +51,5 @@ fetch("./admin/admin.json").then(function(response){
         `;
     }
 
-    placeholder.innerHTML = out;
+    placeholder.innerHTML = ShoeOut;
 })

@@ -4,7 +4,7 @@ let Shoes = [
     Brand: 'Nike',
     Price: 'R1300'
 }
-];
+];9
 
 let submit = document.querySelector('#submit');
 

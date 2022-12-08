@@ -1,3 +1,4 @@
+
 // fetch('./admin/admin.json').then((data) =>{
 //     return data.json();
 // }).then((objectData) =>{
@@ -52,4 +53,5 @@ fetch("./admin/admin.json").then(function(response){
     }
 
     card.innerHTML = ShoeOut;
+    localStorage.setItem('ShoeStorage', JSON.stringify(ShoeStorage));
 })

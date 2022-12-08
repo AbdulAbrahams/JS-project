@@ -1,3 +1,55 @@
+// localStorage.setItem('shoesPalace', JSON.stringify([
+//     {"ID": 0,
+//     "Name": "Air Forces",
+//     "Brand": "Nike",
+//     "Price": "R2800",
+//     "img": "https://i.postimg.cc/SKBrHCGy/Nike-sb.jpg"
+//     },
+
+//     {"ID": 1,
+//     "Name": "Grey Retro 4s",
+//     "Brand": "Jordan",
+//     "Price": "R3000",
+//     "img": "https://i.postimg.cc/BQk7rmGK/grey-4s.jpg"
+//     },
+
+//     {"ID": 2,
+//     "Name": "Off-White Retro 1s",
+//     "Brand": "Nike",
+//     "Price": "R5000",
+//     "img": "https://i.postimg.cc/bw1gK8T7/offwhite-jordan.jpg"
+//     },
+
+//     {"ID": 3,
+//     "Name": "Retro 1 SpongeBob",
+//     "Brand": "Nike",
+//     "Price": "R1300",
+//     "img": "https://i.postimg.cc/q7jsT7C5/canary.jpg"
+//     },
+
+//     {"ID": 4,
+//     "Name": "Eminem Carhartt x Air Jordan 4",
+//     "Brand": "Jordan",
+//     "Price": "R4000",
+//     "img": "https://i.postimg.cc/m2YVnBV0/jordan-4.jpg"
+//     },
+
+//     {"ID": 5,
+//     "Name": "Jordan Retro 1 Baby-Blue",
+//     "Brand": "Jordan",
+//     "Price": "R2000",
+//     "img": "https://i.postimg.cc/TPzDGW3Q/nelson-ndongala-k-KObh7t-UPNc-unsplash.jpg"
+//     }
+// ]));
+
+// let x = JSON.parse(localStorage.getItem('shoesPalace'));
+// console.log(x);
+
+// Object.keys(x).forEach(data => {
+//     console.log(x[d].Name);
+// });
+
+
 let Shoes = [
     {"ID": 0,
     "Name": "Air Forces",
@@ -42,13 +94,21 @@ let Shoes = [
     }
 ];
 
+// let ShoeStorage = JSON.parse(localStorage.getItem("ShoeStorage"))
+// ? JSON.parse(localStorage.getItem("ShoeStorage"))
+
+// : [
+    
+// ]
+
+
 
 let submit = document.querySelector('#submit');
 
 fetch("./admin.json").then(function(response){
     return response.json();
 }).then(function(Shoes){
-    let placeholder = document.querySelector("#shoe-list");
+    let ShoeList = document.querySelector("#shoe-list");
     let ShoeOut = "";
     for(let Data of Shoes){
         ShoeOut +=`
@@ -59,11 +119,12 @@ fetch("./admin.json").then(function(response){
     <td>${Data.Price}</td>
     <td>
     <a href="#" class="btn btn-dark btn-sm">Edit</a>
-    <a href="#" class="btn btn-primary btn-sm">Delete</a>
+    <a href="#" class="btn btn-primary btn-sm" onclick="Delete()">Delete</a>
     </tr>`;
     }
 
-    placeholder.innerHTML = ShoeOut;
+    ShoeList.innerHTML = ShoeOut;
+    localStorage.setItem('ShoeStorage', JSON.stringify(ShoeStorage));
 })
 
 
@@ -84,6 +145,15 @@ submit.addEventListener('click', (e)=> {
             Price
         }
     )
+
+
+    localStorage.setItem('ShoeStorage', JSON.stringify([ {
+        ID,
+        Name,
+        Brand,
+        Price
+    }]));
+    
      let tableData = "";
      Shoes.map((data) =>{
          tableData+=`
@@ -97,10 +167,20 @@ submit.addEventListener('click', (e)=> {
          <a href="#" class="btn btn-primary btn-sm">Delete</a>
          </tr>`;
      })
-    document.getElementById("shoe-list").innerHTML=tableData;
+     let list = document.getElementById("shoe-list");
+     document.getElementById("shoe-list").innerHTML=tableData;
+
  })
 
-     localStorage.setItem('./admin.json', JSON.stringify(people));
+        function Delete(del){
+        if(confirm("Do you want to delete this Shoe?")){
+           let del = Shoes.splice(del, 1);
+            localStorage.setItem('ShoeStorage', JSON.stringify([ {
+                del
+            }]));
+        }
+      }
+      localStorage.setItem('ShoeStorage', JSON.stringify(ShoeStorage));
 
 
 

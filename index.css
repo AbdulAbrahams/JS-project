@@ -1,2 +1,50 @@
+*, 
+*::after,
+::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: fantasy;
+    font-weight: 400;
+}
 
+.sneakyh1{
+    padding-bottom: 50px;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 8vh;
+}
+
+.landpic{
+    width: 100%;
+    max-height: 100vh;
+}
+
+.sort{
+    padding-bottom: 50px;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 8vh;
+}
+
+.sort-con{
+    display: flex;
+    justify-content: center;
+    max-width: 80% !important;
+}
+
+select{
+    justify-content: center;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    width: 150px;
+    padding: 5px;
+}
+
+@media (width < 4000px) {
+    *{
+    font-family: fantasy;
+    font-weight: 400;
+}
+}
 

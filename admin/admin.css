@@ -19,6 +19,16 @@ form{
     grid-template-columns: 1fr;
     gap: 2rem;
 }
+.crud-table{
+    display: flex !important;
+
+}
+
+@media (width < 631px) {
+    .crud-table{
+        flex-direction: column wrap !important;
+    }
+}
 
 
 

@@ -1,37 +1,12 @@
+let shoes = JSON.parse(localStorage.getItem('shoesPalace'));
+let checkout = [];
+localStorage.setItem('checkoutShoe', JSON.stringify(checkout))
 
-// fetch('./admin/admin.json').then((data) =>{
-//     return data.json();
-// }).then((objectData) =>{
-//     console.log(objectData[0].firstName);
-//     let tableData="";
-//     objectData.map((values) =>{
-//         tableData= `
-//         <div class="card shadow-sm">
-//         <svg src="${values.img}"class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"></svg>
 
-//         <div class="card-body">
-//           <p class="card-text" value="Nike">${values.Name}</p>
-//           <div class="d-flex justify-content-between align-items-center">
-//             <div class="btn-group">
-//               <button type="button" class="btn btn-sm btn-outline-secondary">${values.Brand}</button>
-//               <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-//             </div>
-//             <small class="text-muted" value="R1000-R1500">${values.Price}</small>
-//           </div>
-//         </div>
-//       </div>
-//     </div>`;
-//     })
-//     document.getElementById("card").innerHTML=tableData;
-// })
-
-fetch("./admin/admin.json").then(function(response){
-    return response.json();
-}).then(function(Shoes){
-    let card = document.querySelector("#shoe-output");
-    let ShoeOut = "";
-    for(let Data of Shoes){
-        ShoeOut +=`
+Object.keys(shoes).forEach((keyShoe) => {
+let ShoeOut = document.querySelector("#shoe-output");
+let Data = shoes[keyShoe];
+        ShoeOut.innerHTML +=`
         <div class="col">
         <div class="card shadow-sm">
         <img src="${Data.img}">
@@ -39,10 +14,9 @@ fetch("./admin/admin.json").then(function(response){
           <p class="card-text" value="Nike">${Data.Name}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-dark">Add to Cart</button>
+              <button type="button" class="btn btn-sm btn-dark" id="addShoe" onclick="shoeAdd()">Add to Cart</button>
             </div>
             <large class="text-muted">${Data.Brand}</large>
-
             <large class="text-success" value="R1000-R1500">${Data.Price}</large>
           </div>
         </div>
@@ -50,8 +24,49 @@ fetch("./admin/admin.json").then(function(response){
     </div>
     </div>
         `;
+    
+  })
+
+    // card.innerHTML = ShoeOut;
+
+    let checkoutShoe = localStorage.setItem('shoesPalace', JSON.stringify(checkoutShoe));
+
+    function shoeAdd(){
+    let checkoutShoe = JSON.parse(localStorage.getItem('shoesPalace'));
+    for(let Data of shoes){
+       let Name = Data.Name;
+       let Brand = Data.Brand;
+       let Price = Data.Price;
+    
+       checkout.push(
+          {
+              Name,
+              Brand,
+              Price
+          }
+      )
+      localStorage.setItem('checkoutShoe', JSON.stringify([{
+              Name,
+              Brand,
+              Price
+      }]));
+      }
+      console.log(checkout);
     }
 
-    card.innerHTML = ShoeOut;
-    localStorage.setItem('ShoeStorage', JSON.stringify(ShoeStorage));
-})
+    localStorage.setItem('checkoutShoe', JSON.stringify(checkoutShoe));
+
+
+    // let checkoutShoe = JSON.parse(localStorage.getItem('checkoutShoe'))
+    let addShoe = document.getElementById("addShoe");
+
+
+    Object.keys(addShoe).forEach((shoe) => {
+      addShoe(shoe).addEventListener('click', (e) => {
+        checkoutShoe.push(Data[shoe]);
+        localStorage.setItem('checkoutShoe', JSON.stringify(checkoutShoe));
+      })
+    })
+
+  
+  

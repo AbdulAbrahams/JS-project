@@ -16,7 +16,7 @@
         </a>
 
         <ul class="nav nav-pills mx-3" id="nav" style="font-family: fantasy;"> 
-            <button type="button" class="btn btn-dark mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Add a Shoe</button>
+            <a><button type="button" class="btn btn-dark mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Add a Shoe</button></a>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -28,11 +28,11 @@
             <form autocomplete="off">
               <input class="col-12 my-3" id="ID" type="text" placeholder="Enter Shoe ID" required>
                 <input class="col-12 my-3" id="Name" type="text" placeholder="Enter Shoe Name" required>
-                <input class="col-12 my-3" id="Size" type="text" placeholder="Enter Shoe Size" required>
                 <input class="col-12 my-3" id="Brand" type="text" placeholder="Enter Shoe Brand" required>
                 <input class="col-12 my-3" id="Price" type="text" placeholder="Enter Shoe Price" required>
+                <input class="col-12 my-3" id="img" type="text" placeholder="Enter Shoe URL" required>
                 <div class="modal-footer">
-                    <button type="Submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit" value="submit">Add Shoe</button>
+                    <button type="Submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit" value="submit" onclick="add()">Add Shoe</button>
                 </div>
             </form>
         </div>
@@ -44,13 +44,14 @@
     </header>
 
     <main>
-        <div class="">
-            <table class="table container-sm table-hover">
+        <div class="table-responsive crud-table">
+            <table class="table align-middle container-sm table-hover">
             <thead class="table-dark">
                 <th>ID</th>
                 <th>Name</th>
                 <th>Brand</th>
                 <th>Price</th>
+                <th>Image URL</th>
                 <th>Edit</th>
             </thead>
             <tbody id="shoe-list" class="table-secondary">

@@ -19,13 +19,14 @@ form{
     grid-template-columns: 1fr;
     gap: 2rem;
 }
-
-table{
+.crud-table{
     display: flex !important;
+
 }
 
-@media screen and ( width < 700px ) {
-    table{
+@media (width < 631px) {
+    .crud-table{
         flex-direction: column wrap !important;
     }
 }
+

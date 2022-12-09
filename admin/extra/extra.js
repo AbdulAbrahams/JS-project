@@ -246,3 +246,13 @@ fetch("./admin/admin.json").then(function(response){
     card.innerHTML = ShoeOut;
     localStorage.setItem('ShoeStorage', JSON.stringify(ShoeStorage));
 })
+
+
+
+function shoeAdd(){
+    Object.keys(shoes).forEach((keyShoe) => {
+      let ShoeOut = document.querySelector("#shoe-output");
+      let Data = shoes[keyShoe];
+
+    })
+  }

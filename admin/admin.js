@@ -1,68 +1,46 @@
-localStorage.setItem('shoesPalace', JSON.stringify([
-    {"ID": 0,
-    "Name": "Air Forces",
-    "Brand": "Nike",
-    "Price": "R2800",
-    "img": "https://i.postimg.cc/SKBrHCGy/Nike-sb.jpg"
-    },
-
-    {"ID": 1,
-    "Name": "Grey Retro 4s",
-    "Brand": "Jordan",
-    "Price": "R3000",
-    "img": "https://i.postimg.cc/BQk7rmGK/grey-4s.jpg"
-    },
-
-    {"ID": 2,
-    "Name": "Off-White Retro 1s",
-    "Brand": "Nike",
-    "Price": "R5000",
-    "img": "https://i.postimg.cc/bw1gK8T7/offwhite-jordan.jpg"
-    },
-
-    {"ID": 3,
-    "Name": "Retro 1 SpongeBob",
-    "Brand": "Nike",
-    "Price": "R1300",
-    "img": "https://i.postimg.cc/q7jsT7C5/canary.jpg"
-    },
-
-    {"ID": 4,
-    "Name": "Eminem Carhartt x Air Jordan 4",
-    "Brand": "Jordan",
-    "Price": "R4000",
-    "img": "https://i.postimg.cc/m2YVnBV0/jordan-4.jpg"
-    },
-
-    {"ID": 5,
-    "Name": "Jordan Retro 1 Baby-Blue",
-    "Brand": "Jordan",
-    "Price": "R2000",
-    "img": "https://i.postimg.cc/TPzDGW3Q/nelson-ndongala-k-KObh7t-UPNc-unsplash.jpg"
-    }
-]));
-
 let shoes = JSON.parse(localStorage.getItem('shoesPalace'));
-localStorage.setItem('shoesPalace', JSON.stringify(shoes));
+// localStorage.setItem('shoesPalace', JSON.stringify(shoes));
+
+// var selectedRow = null;
 
 
 let ShoeList = document.querySelector("#shoe-list");
     let ShoeOut = "";
-    for(let details of shoes){
+    shoes.forEach((details,index) => {
         ShoeOut +=`
-    <tr>
-    <td>${details.ID}</td>
+    <tr style="font-size: 12px;">
     <td>${details.Name}</td>
     <td>${details.Brand}</td>
     <td>${details.Price}</td>
-    <td>${details.img}</td>
+    <td><img src="${details.img}" style="width: 70px; height: 50px;"></td>
     <td>
-    <a href="#" class="btn btn-dark btn-sm" id="addCart">Edit</a>
-    <a href="#" class="btn btn-primary btn-sm" onsubmit="delShoe(td)">Delete</a>
+    <a href="#" class="btn btn-dark btn-sm edit" data-bs-toggle="modal" data-bs-target="#editModal" id="addCart" style="font-size: 12px;">Edit</a>
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add a Shoe</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form autocomplete="off">
+                <input class="col-12 my-3" id="Name" type="text" value="${details.Name}" required>
+                <input class="col-12 my-3" id="Brand" type="text" value="${details.Brand}" required>
+                <input class="col-12 my-3" id="Price" type="text" value="${details.Price}" required>
+                <input class="col-12 my-3" id="img" type="text" value="${details.img}" required>
+                <div class="modal-footer">
+                    <button type="Submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit" value="submit">Edit Shoe</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    <a href="#" id="${index}" class="btn btn-primary btn-sm delete" onsubmit="delShoe(td)" style="font-size: 12px;">Del</a>
     </tr>`;
-
+        console.log(details.Name)
     // localStorage.setItem('shoesPalace', JSON.stringify(shoes));
-    }
+    })
     
 
     ShoeList.innerHTML = ShoeOut;
@@ -90,7 +68,7 @@ let ShoeList = document.querySelector("#shoe-list");
          shoes.map((details) =>{
              tableData+=`
              <tr>
-             <td>${details.ID}</td>
+             <td>${details.id}</td>
              <td>${details.Name}</td>
              <td>${details.Brand}</td>
              <td>${details.Price}</td>
@@ -102,16 +80,42 @@ let ShoeList = document.querySelector("#shoe-list");
          })
          document.getElementById("shoe-list").innerHTML=tableData;
          localStorage.setItem('shoesPalace', JSON.stringify(shoes));
-        //  location.reload();
+         location.reload();
      }
+
+     
      localStorage.setItem('shoesPalace', JSON.stringify(shoes));
 
 
      
-     function delShoe(td){
-        row = td.parentElement.parentElement;
-        document.getElementById("shoe-list").deleteRow(row.rowIndex);
-     }
+    document.getElementById("shoe-list").addEventListener('click', (e) => {
+        shoeDelete = e.target;
+        if(shoeDelete.classList[3] == "delete"){
+            let testarr = JSON.parse(localStorage.getItem('shoesPalace'))
+            let newArr = testarr.splice(testarr[shoeDelete.id] ,1)
+            console.log(newArr)
+            shoeDelete.parentElement.parentElement.remove(shoes.details); 
+            localStorage.setItem('shoesPalace', JSON.stringify(shoes.details));
+            console.log(shoes.details)
+        }
+
+        localStorage.setItem('shoesPalace', JSON.stringify(shoes));
+    })
+
+    localStorage.setItem('shoesPalace', JSON.stringify(shoes));
+
+
+    document.getElementById("shoe-list").addEventListener('click', (e) => {
+        shoeEdit = e.target;
+        if(shoeEdit.classList.contains("edit")){
+            shoeEditRow = shoeEdit.parentElement.parentElement;
+                document.querySelector('#ID').value;
+                document.querySelector('#Name').value;
+                document.querySelector('#Brand').value;
+                document.querySelector('#Price').value;
+                document.querySelector('#img').value;
+        }
+    })
 
     
         

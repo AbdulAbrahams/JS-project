@@ -8,14 +8,13 @@ let ShoeList = document.querySelector("#shoe-list");
     let ShoeOut = "";
     shoes.forEach((details,index) => {
         ShoeOut +=`
-    <tr>
-    <td>${details.id}</td>
+    <tr style="font-size: 12px;">
     <td>${details.Name}</td>
     <td>${details.Brand}</td>
-    <td>${details.Price}</td>
-    <td>${details.img}</td>
+    <td>R${details.Price}</td>
+    <td><img src="${details.img}" style="width: 60px; height: 50px;"></td>
     <td>
-    <a href="#" class="btn btn-dark btn-sm edit" data-bs-toggle="modal" data-bs-target="#editModal" id="addCart">Edit</a>
+    <a href="#" class="btn btn-dark btn-sm edit" data-bs-toggle="modal" data-bs-target="#editModal" id="addCart" style="font-size: 12px;">Edit</a>
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -25,7 +24,6 @@ let ShoeList = document.querySelector("#shoe-list");
         </div>
         <div class="modal-body">
             <form autocomplete="off">
-              <input class="col-12 my-3" id="ID" type="text" value="${details.id}" required>
                 <input class="col-12 my-3" id="Name" type="text" value="${details.Name}" required>
                 <input class="col-12 my-3" id="Brand" type="text" value="${details.Brand}" required>
                 <input class="col-12 my-3" id="Price" type="text" value="${details.Price}" required>
@@ -38,7 +36,7 @@ let ShoeList = document.querySelector("#shoe-list");
       </div>
     </div>
   </div>
-    <a href="#" id="${index}" class="btn btn-primary btn-sm delete" onsubmit="delShoe(td)">Delete</a>
+    <a href="#" id="${index}" class="btn btn-primary btn-sm delete" onsubmit="delShoe(td)" style="font-size: 12px;">Del</a>
     </tr>`;
         console.log(details)
     // localStorage.setItem('shoesPalace', JSON.stringify(shoes));
@@ -70,14 +68,13 @@ let ShoeList = document.querySelector("#shoe-list");
          shoes.map((details) =>{
              tableData+=`
              <tr>
-             <td>${details.id}</td>
              <td>${details.Name}</td>
              <td>${details.Brand}</td>
-             <td>${details.Price}</td>
-             <td>${details.img}</td>
+             <td>R${details.Price}</td>
+             <td><img src="${details.img}"></td>
              <td>
              <a href="#" class="btn btn-dark btn-sm">Edit</a>
-             <a href="#" class="btn btn-primary btn-sm">Delete</a>
+             <a href="#" class="btn btn-primary btn-sm">Del</a>
              </tr>`;
          })
          document.getElementById("shoe-list").innerHTML=tableData;

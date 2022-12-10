@@ -26,7 +26,7 @@
         <section class="landing">
             <div class="container-lg">
                 <h1 class="sneakyh1">SNEAKY KICKS CPT</h1>
-        <img class="landpic" src="./images/in548ykhzbdnlviuciza.jpg" alt="img">
+        <img class="landpic" src="https://i.postimg.cc/c4JNVNph/in548ykhzbdnlviuciza.jpg" alt="img">
             </div>
         </section>
 
@@ -40,7 +40,7 @@
                     <ul class="dropdown-menu">
                         <select id="Price">
                             <option value="" disabled="" selected="" hidden="">Price Range</option>
-                            <option value="R1000-R1500">R1000-R1500</option>
+                            <option value="R1000-R1500" id="R1000-R1500" onclick="filterR1500()">R1000-R1500</option>
                             <option value="R1500-R2500">R1500-R2500</option>
                             <option value="R2500-R5000">R2500-R5000</option>
                           </select>
@@ -49,17 +49,6 @@
                                 <option value="Nike">Nike</option>
                                 <option value="Adidas">Adidas</option>
                                 <option value="Jordan">Jordan</option>
-                              </select>
-                            <select id="Size">
-                                <option value="" disabled="" selected="" hidden="">Shoe Size</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
                               </select>
                     </ul>
                   </div>
@@ -74,6 +63,15 @@
 
         </section>
     </main>
+
+    <footer class="py-3 my-5" style="font-family: fantasy;">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="./admin/admin.html" class="nav-link px-2 text-muted">Admin</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Back to Top</a></li>
+        <li class="nav-item"><a href="./Checkout/checkout.html" class="nav-link px-2 text-muted">Checkout</a></li>
+      </ul>
+      <p class="text-center text-muted">© 2022 Company, Inc</p>
+    </footer>
 
     <script src="./index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
